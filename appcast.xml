@@ -1,0 +1,27 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Elytra Changelog</title>
+    <description>Stable release updates and links to download.</description>
+    <language>en</language>
+    {% for post in site.posts %}
+    <item>
+      <title>{{ post.title | xml_escape }}</title>
+      <link>{{ post.url | absolute_url }}</link>
+      <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+      {%- if post.isBeta -%}
+      <sparkle:channel>beta</sparkle:channel>
+      {%- endif -%}
+      <sparkle:version>{{ post.version }}</sparkle:version>
+      <sparkle:shortVersionString>{{ post.shortVersion }}</sparkle:shortVersionString>
+      <sparkle:releaseNotesLink>{{ post.url | absolute_url }}</sparkle:releaseNotesLink>
+      <sparkle:releaseNotes>{{ post.content | xml_escape }}</sparkle:releaseNotes>
+      <sparkle:minimumSystemVersion>{{ post.minVer }}</sparkle:minimumSystemVersion>
+      <enclosure url="{{ site.url | absolute_url }}/dist/{{ post.dist | xml_escape }}" length="{{ post.size }}" type="application/octet-stream" sparkle:edSignature="{{ post.edSig }}"/>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>
