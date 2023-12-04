@@ -1,0 +1,19 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ page.title }}</title>
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:locale" content="en_IN">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="{{ page.title }}">
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <article>
+    {{ page.content }}
+  </article>
+</body>
